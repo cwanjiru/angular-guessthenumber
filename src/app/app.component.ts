@@ -44,6 +44,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
- 
+  deviation:number;
+  noOfTries:number;
+  original:number;
+  guess:number;
+
+  constructor(){
+    this.initialiseGame()
+  }
+  initialiseGame=()=>{
+    this.noOfTries=0;
+    this.original=Math.floor((Math.random()*1000)+ 1);
+    this.guess=null;
+    this.deviation=null;
+    
+  }
   
 }
