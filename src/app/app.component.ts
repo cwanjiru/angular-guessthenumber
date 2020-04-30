@@ -57,7 +57,11 @@ export class AppComponent {
     this.original=Math.floor((Math.random()*1000)+ 1);
     this.guess=null;
     this.deviation=null;
-    
+
+  }
+  verifyGuess=()=>{
+    this.deviation=this.original-this.guess;
+    this.noOfTries=this.noOfTries+1;
   }
   
 }
