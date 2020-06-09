@@ -4,6 +4,9 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="container">
+    <p class="text-info">
+      
+      </p>
       <h2>Guess the Number!!!</h2>
       <div class="card bg-light mb-3">
         <div class="card-body">
@@ -15,10 +18,14 @@ import { Component } from '@angular/core';
       <div>
         <label>Your Guess: </label>
         <input
-          type="number"
+          [type]="'number'"
           [value]="guess"
+      
           (input)="guess = $event.target.value"
         />
+        
+
+
         <button class="btn btn-primary btn-sm" (click)="verifyGuess()">
           Verify
         </button>
@@ -26,6 +33,8 @@ import { Component } from '@angular/core';
           Restart
         </button>
       </div>
+      <div>
+      
       <div>
         <p *ngIf="deviation < 0" class="alert alert-warning">
           Your Guess is Higher
@@ -38,7 +47,13 @@ import { Component } from '@angular/core';
       <p class="text-info">
         Number of Guesses:
         <span class="badge">{{ noOfTries }}</span>
+
       </p>
+      
+
+
+
+
     </div>
   `,
   styleUrls: ['./app.component.css'],
@@ -48,6 +63,9 @@ export class AppComponent {
   noOfTries:number;
   original:number;
   guess:number;
+  testVariable:string;
+
+
 
   constructor(){
     this.initialiseGame()
@@ -59,9 +77,18 @@ export class AppComponent {
     this.deviation=null;
 
   }
+  
   verifyGuess=()=>{
-    this.deviation=this.original-this.guess;
-    this.noOfTries=this.noOfTries+1;
+    if (this.guess>=1){
+      this.deviation=this.original-this.guess;
+      this.noOfTries=this.noOfTries+1;
+      
+    }
+    else{
+      alert('Please use a number greater than 0 or less than a 1000')
+    }
   }
+  
+
   
 }
